@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=12461151747303656"/>
+<title>What's New in SAPUI5</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loioaf57b037fc0a4c8f8fa51c1a46852329">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">What's New in SAPUI5</h1>
+<div class="body conbody"><p class="shortdesc"/>
+<p class="p">With this release the UI development toolkit for HTML5 (SAPUI5) is upgraded from version
+			1.22 to 1.24.</p>
+<p class="p">Find a detailed list of new and enhanced functions here: <a class="extlink" href="../../docs/guide/ReleaseNotes.html">SAPUI5 Release Notes<img src="images/sap_link.png" class="link-sap" alt="Information published on SAP site" title="Information published on SAP site" border="0"/></a></p>
+<div class="section"><div class="section_title">Additional Information About Changes</div><div type="Additional Information About Changes">
+			
+			<p class="p"><strong class="ph b">Improved Behavior of sap.m.Input value Property</strong></p>
+
+			<p class="p">As of version 1.24 of the UI development toolkit for HTML5 (SAPUI5), the
+					<samp class="ph codeph">value</samp> property of <samp class="ph codeph">sap.m.Input</samp> is no longer
+				updated on every keystroke. Instead, the value is only updated when the user presses
+					<span class="ph uicontrol">Enter</span> or leaves the input.</p>
+
+			<p class="p">This new behavior fully supports standard UI5 data binding featuring formatters and
+				types. For instance, in some applications it was not possible to enter
+					<samp class="ph codeph">1.2</samp> into an input bound with a numeric type, as the value
+					<samp class="ph codeph">1.</samp> was already validated and discarded before the user had the
+				chance to enter the last digit. The new behavior means that you can now use the
+					<samp class="ph codeph">sap.m.Input</samp> control in two-way binding to full effect.</p>
+
+			<p class="p">If you still need to update values immediately on every keystroke, the following
+				options are available:</p>
+
+			<ul class="ul" id="loioaf57b037fc0a4c8f8fa51c1a46852329__ul_yjv_lff_pp"><li class="li">Handle <samp class="ph codeph">liveChange</samp> events. This feature has already been
+					available for many releases.</li>
+<li class="li">Enable the new boolean property <samp class="ph codeph">valueLiveUpdate</samp> (default:
+					false), which lets you use the old behavior.</li>
+</ul>
+
+		</div></div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="What's New in SAPUI5";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>

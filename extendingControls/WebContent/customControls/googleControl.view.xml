@@ -1,0 +1,8 @@
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.ui.commons" controllerName="customControls.googleControl"
+	xmlns:gMap="customControls.Control" xmlns:html="http://www.w3.org/1999/xhtml">
+	<Button text="My New Button" ></Button>
+	<gMap:googleMaps id="gMappAddr" address="Mexico" visible="true"> 
+	</gMap:googleMaps>
+	
+</core:View>

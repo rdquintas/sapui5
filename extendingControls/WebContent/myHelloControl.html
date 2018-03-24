@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv='Content-Type' content='text/html;charset=UTF-8' />
+
+<script src="resources/sap-ui-core.js" id="sap-ui-bootstrap"
+	data-sap-ui-libs="sap.m" data-sap-ui-theme="sap_bluecrystal">
+		</script>
+<!-- only load the mobile lib "sap.m" and the "sap_bluecrystal" theme -->
+
+<script>
+		sap.ui.core.Control.extend( "my.Hello", { 
+			metadata: { // the Control API 
+			properties: { name: "string"// setter and getter are created behind the scenes
+				} },
+		renderer: function(oRm, oControl){ 
+			// the part creating the HTML 
+			oRm.write( "<span>Hello " ); // write the Control property 'name', with XSS protection
+			oRm.writeEscaped( oControl.getName());
+			oRm.write( "</span>" ); }});
+			new my.Hello({ name: "Jhon" }).placeAt( "content" );
+		</script>
+
+</head>
+<body class="sapUiBody" role="application">
+	<div id="content"></div>
+</body>
+</html>

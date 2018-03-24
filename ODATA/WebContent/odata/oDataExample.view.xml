@@ -1,0 +1,56 @@
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+		controllerName="odata.oDataExample" xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page title="Title">
+		<Table id="idProductsTable"
+    inset="false"
+    items="{/Products}">
+    <headerToolbar>
+      <Toolbar>
+        <Label text="Products"></Label>
+      </Toolbar>
+    </headerToolbar>
+    <columns>
+      <Column
+        width="12em">
+        <Text text="Product Name" />
+      </Column>
+      <Column
+        minScreenWidth="Tablet"
+        demandPopin="true">
+        <Text text="Description" />
+      </Column>
+      <Column
+        minScreenWidth="Tablet"
+        demandPopin="true"
+        hAlign="Right">
+        <Text text="Rating" />
+      </Column>
+      <Column
+        minScreenWidth="Tablet"
+        demandPopin="true"
+        hAlign="Center">
+        <Text text="Price" />
+      </Column>
+    </columns>
+    <items>
+      <ColumnListItem>
+        <cells>
+          <ObjectIdentifier
+            title="{Name}"/>
+          <Text
+            text="{Description}" />
+          <Text
+            text="{path : 'ReleaseDate',formatter : 'odata.util.Formatter.date' }" />
+       <Text text="{Rating}"></Text>
+       <Text text="{Price}"></Text>
+        </cells>
+      </ColumnListItem>
+    </items>
+  </Table>
+  <HBox>
+  <Button text="Create" press="onCreate"></Button>
+  <Button text="Change / Update" press="onChange"></Button>
+  <Button text="Delete" press="onDelete"></Button>
+  </HBox>
+	</Page>
+</core:View>

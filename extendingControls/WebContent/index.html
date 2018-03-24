@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv='Content-Type' content='text/html;charset=UTF-8' />
+
+<script src="resources/sap-ui-core.js" id="sap-ui-bootstrap"
+	data-sap-ui-libs="sap.m,sap.ui.commons" data-sap-ui-theme="sap_bluecrystal">
+	
+</script>
+<!-- only load the mobile lib "sap.m" and the "sap_bluecrystal" theme -->
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script> <!--Including Google Maps library -->
+<script>
+	/* 
+	// Example for Button control
+	var oBttn = new sap.ui.commons.Button({
+		text : "My Button",
+		press : function() {
+			var oMsg = new sap.ui.commons.MessageBox.alert( "My Button pressed");
+			return oMsg;
+		}
+	}); */
+	
+	//Extending Button in SAP UI5 
+	/* sap.ui.commons.Button.extend("HoverButton", { // call the new Control type "HoverButton" 
+	      // and let it inherit from sap.ui.commons.Button
+	metadata: {
+	events: {
+	"hover" : {}  // this Button has also a "hover" event, in addition to "press" of the normal Button
+	}
+	},
+
+	// the hover event handler:
+	onmouseover : function(evt) {   // is called when the Button is hovered - no event registration required
+	this.fireHover();
+	},
+
+	renderer: {} // add nothing, just inherit the ButtonRenderer as is; 
+	// In this case (since the renderer is not changed) you could also specify this explicitly with:  renderer:"sap.ui.commons.ButtonRenderer"
+	// (means you reuse the ButtonRenderer instead of creating a new view
+	});
+	var myControl = new HoverButton("myBtn", {
+	    text: "Hover Me",
+	    hover: function(evt) {
+	       new sap.ui.commons.MessageBox.alert("Button " + evt.getSource().getId() + " was hovered.");
+	    }
+	});
+	myControl.placeAt("content"); */
+	sap.ui.localResources("customControls");
+	// Another example for extending existing SAPUI5 controls
+	var oView = new sap.ui.view({id:"tF1",viewName : "customControls.googleControl", type : "XML" });
+	oView.placeAt("content");
+	
+</script>
+
+</head>
+<body class="sapUiBody" role="application">
+	<div id="content"></div>
+</body>
+</html>

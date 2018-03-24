@@ -1,0 +1,34 @@
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+	controllerName="mlistcontrol.mList" xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page title="mList Control Example">
+		<content>
+			<List id="ProductList" footerText="This is the footer text" showUnread="true"
+				enableBusyIndicator="true" backgroundDesign="Solid" items="{/ProductCollection}"
+				busyIndicatorDelay="500">
+				<!-- growing="true" growingThreshold="5" -->
+				<!-- items="{ path: '/ProductCollection', sorter: { path: 'SupplierName', descending: 
+					false, group: true }, groupHeaderFactory: '.getGroupHeader' }" -->
+				<!-- mode="Delete" delete="handleDelete" -->
+				<headerToolbar>
+					<Toolbar>
+						<Label text="Products" />
+						<ToolbarSpacer />
+						<!-- <Button icon="sap-icon://refresh" press="refreshDataFromBackend" /> -->
+						<!-- <Select selectedKey="MultiSelect" change="handleSelectChange"> <items> 
+							<core:Item key="None" text="No Selection" /> <core:Item key="SingleSelect" text="Single 
+							Selection" /> <core:Item key="SingleSelectLeft" text="Single Selection Left" /> <core:Item 
+							key="SingleSelectMaster" text="Single Selection (Master)" /> <core:Item key="MultiSelect" 
+							text="Multi Selection" /> </items> </Select> -->
+
+						<SearchField liveChange="onSearch" width="50%" />
+					</Toolbar>
+				</headerToolbar>
+				<StandardListItem title="{Name}" icon="{ProductPicUrl}" unread="true" iconDensityAware="false" iconInset="false"
+					counter="{Quantity}" press="handlePress" type="Navigation" />
+					<swipeContent>
+					
+					</swipeContent>
+			</List>
+		</content>
+	</Page>
+</core:View>

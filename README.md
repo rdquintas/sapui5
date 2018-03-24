@@ -5,6 +5,13 @@ Stuff I did with SAPUI5 and FIORI
 ## Angular Fundamentals
 Project | Information
 --- | ---
-[mosh02](https://github.com/rdquintas/sapui5/tree/master/mosh02) | Create an authors component and service with array
-[mosh03](https://github.com/rdquintas/sapui5/tree/master/mosh03) | Create a toggle star component with CSS class binding
+[extendingControls](https://github.com/rdquintas/sapui5/tree/master/extendingControls) | xxx
+[mListControl](https://github.com/rdquintas/sapui5/tree/master/mListControl) | xxxx
+[myFioriApp](https://github.com/rdquintas/sapui5/tree/master/myFioriApp) | xxxx
+[myFioriApp2](https://github.com/rdquintas/sapui5/tree/master/myFioriApp2) | xxxx
+[ODATA](https://github.com/rdquintas/sapui5/tree/master/ODATA) | xxxx
+[routingExample](https://github.com/rdquintas/sapui5/tree/master/routingExample) | xxxx
+[DemoApp2](https://github.com/rdquintas/sapui5/tree/master/DemoApp2) | xxxx
+
+
 

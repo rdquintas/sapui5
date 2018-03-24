@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+
+
+<meta name="abstract" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="css/documentation.css?x=07798794253185481"/>
+<title>Cookbook for OPA5</title>
+<!--[if lte IE 7]><style>
+      .codeblock{
+          overflow:visible;
+      }</style><![endif]-->
+
+
+  <script src="../../resources/sap/ui/thirdparty/jquery/jquery-1.10.2.js"></script>
+    <script src="../../resources/sap/ui/demokit/js/highlight-query-terms.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/sap/ui/demokit/themes/base/highlight-query-terms.css" />
+  </head>
+<body class="sap_bluecrystal" id="loioce4b180d97064ad088a901b53ed48b21">
+<div id="wrapper"><div id="container">
+<h1 class="title topictitle1">Cookbook for OPA5</h1>
+<div class="body"><p class="shortdesc"/>
+<p class="p">The following sections provide common use cases for retrieving controls.</p>
+<div class="section"><div class="section_title">Retrieving a Control by its ID</div><div type="Retrieving a Control by its ID">
+			
+			<p class="p">Example:</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">new sap.ui.test.Opa5().waitFor({
+            id : "page-title",
+            viewName : "Category",
+            viewNamespace : "my.Application.",
+            success : function (oTitle) {
+                ok(oTitle.getVisible(), "the title was visible");
+            }
+        });
+</pre></div>
+
+			<p class="p">In this example, we search for a control with the ID "page-title". The control is
+				located in the <samp class="ph codeph">my.Application.Category</samp> view.</p>
+
+			<p class="p">After finding the control, OPA5 invokes the <samp class="ph codeph">check</samp> function until it returns
+					<samp class="ph codeph">true</samp>. This time, the <samp class="ph codeph">check</samp> function has
+				another parameter with the control instance.</p>
+
+			<p class="p">Another example:</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">new sap.ui.test.Opa5().waitFor({
+                    id : "productList",
+                    viewName : "Category",
+                    success : function (oList) {
+                        ok(oList.getItems().length, "The list did contain products");
+                    }
+                });</pre></div>
+
+			<p class="p">In this example, the <samp class="ph codeph">check</samp> function is ommitted. In this case, OPA5 creates
+				its own <samp class="ph codeph">check</samp> function that waits until the control is found.</p>
+
+		</div></div>
+<div class="section"><div class="section_title">Triggering Clicks on Controls</div><div type="Triggering Clicks on Controls">
+			
+			<p class="p">The easiest way to trigger events is using the <samp class="ph codeph">tap</samp> event in jQuery:</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">iPressOnTheFirstItemInAList : function (myList) {
+                var oFirstItem = myList.getItems()[0];
+
+                oFirstItem.$().trigger("tap");
+                return this;
+            },</pre></div>
+
+		</div></div>
+<div class="section"><div class="section_title">Retrieving a Control that does not have an ID</div><div type="Retrieving a Control that does not have an ID">
+			
+			<p class="p">Sometimes you face the issue that you want to test for a control that has no explicit ID set
+				and maybe you cannot or you do not want to change this for your test. To get arround
+				this issue, use a custom check function to filter for a control that fits your
+				expectation. Let's assume we have a view called "Detail" and there are multiple
+					<samp class="ph codeph">sap.m.ObjectHeaders</samp> on this page. We want to wait until there
+				is an object header with the title "myTitle".</p>
+
+			<p class="p">For achieving this, use the following code:</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">return new Opa5().waitFor({
+            controlType : "sap.m.ObjectHeader",
+            viewName : "Detail",
+            matchers : new sap.ui.test.matchers.PropertyStrictEquals({
+                                         name : "title",
+                                         value: "myTitle"
+                                   }),
+            success : function (aObjectHeaders) {
+                strictEqual(aObjectHeaders.length, 1, "was there was only one Object header with this title on the page");
+                strictEqual(aObjectHeaders[0].getTitle(), "myTitle", "was on the correct Title");
+            }
+</pre></div>
+
+			<p class="p">As no ID is specified, OPA passes an array of controls into the <samp class="ph codeph">check</samp>
+				function. The array contains all visible object header instances in the Detail view.
+				However, a build in support for comparing properties does <span class="ph emphasis emphasis">not</span>
+				exist (yet). So we implement a custom check to achieve this.</p>
+
+		</div></div>
+<div class="section"><div class="section_title">Searching for Controls Inside a Dialog</div><div type="Searching for Controls Inside a Dialog">
+			
+			<p class="p">This example covers the following use case: We want to press a button with <span class="ph uicontrol">Order
+					Now</span> text on it inside a dialog. To achieve this, we set the
+					<samp class="ph codeph">searchOpenDialogs</samp> option to <samp class="ph codeph">true</samp> and then
+				restrict the <samp class="ph codeph">controlType</samp> we want to search to
+					<samp class="ph codeph">sap.m.Button</samp>. We use the <samp class="ph codeph">check</samp> function to
+				search for a button with the text <span class="ph uicontrol">Order Now</span> and save it to
+				the outer scope. After we found it, we trigger a <samp class="ph codeph">tap</samp> event:</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">iPressOrderNow : function () {
+                var oOrderNowButton = null;
+                this.waitFor({
+                    searchOpenDialogs : true,
+                    controlType : "sap.m.Button",
+                    check : function (aButtons) {
+                        return aButtons.filter(function (oButton) {
+                            if(oButton.getText() !== "Order Now") {
+                                return false;
+                            }
+
+                            oOrderNowButton = oButton;
+                            return true;
+                        });
+                    },
+                    success : function () {
+                        oOrderNowButton.$().trigger("tap");
+                    },
+                    errorMessage : "Did not find the Order Now button"
+                });
+                return this;
+            }</pre></div>
+
+		</div></div>
+<div class="section"><div class="section_title">Executing a Single Statement After Other waitFors are Done</div><div type="Executing a Single Statement After Other waitFors are Done">
+			
+			<p class="p">If you skip all parameters except for the <samp class="ph codeph">success</samp> parameter, you can execute
+				something after other <samp class="ph codeph">waitFors</samp> are done. As there is no
+					<samp class="ph codeph">check</samp> function, OPA runs directly to
+				<samp class="ph codeph">success</samp>.</p>
+
+			<div class="div_pre_codeblock"><pre class="pre codeblock prettyprint">iChangeTheHashToTheThirdProduct : function () {
+        return this.waitFor({
+            success : function () {
+                sap.ui.test.Opa5.getWindow().location.hash = "#/Products(2)";
+            }
+        });
+    },</pre></div>
+
+		</div></div>
+</div>
+</div></div>
+<SCRIPT LANGUAGE="JavaScript"><!--
+ var page_title="Cookbook for OPA5";
+
+        if (page_title !='' &&
+        parent.document.title != null) {
+ parent.document.title =
+          page_title;
+ } 
+ var
+        anchor = document.getElementById(location.hash.substring(+1)); if (typeof (anchor)
+        !='undefined' && anchor !=null){
+        var top = anchor.getBoundingClientRect().top; } 
+//-->
+</SCRIPT>
+</body>
+</html>
