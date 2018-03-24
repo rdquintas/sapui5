@@ -2,7 +2,7 @@
 Stuff I did with SAPUI5 and FIORI
 
 
-## Assorted apps
+## List of apps
 Project | Information
 --- | ---
 [extendingControls](https://github.com/rdquintas/sapui5/tree/master/extendingControls) | Using some custom controls and Google Maps
