@@ -1,6 +1,7 @@
 sap.ui.define([
-    "sap/ui/demo/nav/controller/BaseController"
-], function(BaseController) {
+    "sap/ui/demo/nav/controller/BaseController",
+    "sap/ui/model/json/JSONModel"
+], function(BaseController, JSONModel) {
     "use strict";
 
     var _aValidTabKeys = ["Info", "Projects", "Hobbies", "Notes"];
