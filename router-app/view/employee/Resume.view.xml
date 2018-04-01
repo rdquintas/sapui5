@@ -4,7 +4,7 @@
 	xmlns:f="sap.ui.layout.form" busyIndicatorDelay="0">
 	<Page title="{i18n>ResumeOf} {FirstName} {LastName}" id="employeeResumePage" showNavButton="true" navButtonPress="onNavBack" class="sapUiResponsiveContentPadding">
 		<content>
-			<IconTabBar id="iconTabBar" class="sapUiResponsiveContentPadding" binding="{Resume}">
+			<IconTabBar id="iconTabBar" class="sapUiResponsiveContentPadding" binding="{Resume}" select="onTabSelect" selectedKey="{view>/selectedTabKey}">>
 				<items>
 					<IconTabFilter id="infoTab" text="{i18n>Info}" key="Info">
 						<Text text="{Information}" />
