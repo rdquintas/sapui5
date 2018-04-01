@@ -11,7 +11,7 @@ Project | Information
 [myFioriApp2](https://github.com/rdquintas/sapui5/tree/master/myFioriApp2) | Variations on the app above myFioriApp
 [ODATA](https://github.com/rdquintas/sapui5/tree/master/ODATA) | CRUD example with external OData provider from services.odata.org
 [routingExample](https://github.com/rdquintas/sapui5/tree/master/routingExample) | Simple app with ROUTER
-[router-app](https://github.com/rdquintas/sapui5/tree/master/rourouter-apptingExample) | Very complex ROUTER app. Lots of examples and use cases
+[router-app](https://github.com/rdquintas/sapui5/tree/master/router-app) | Very complex ROUTER app. Lots of examples and use cases
 [DemoApp2](https://github.com/rdquintas/sapui5/tree/master/DemoApp2) | All the Demo apps from OPENUI5
 [UI5-Shopping-Cart-Demo](https://github.com/rdquintas/sapui5/tree/master/UI5-Shopping-Cart-Demo) | Shopping cart example
 
